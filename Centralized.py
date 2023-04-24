@@ -3,7 +3,7 @@ from github import Github
 import os
 import subprocess
 
-g = Github('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')
+g = Github('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')
 
 with open('Selling.cfg', 'r') as f:
     data = json.load(f)
@@ -36,7 +36,6 @@ data['SnipeWebhook'] = "https://discord.com/api/webhooks/1095711070896795681/6iC
 
 with open('C:\\Users\\Admin\\Desktop\\Psx_M\\Configurations\\V2\\Selling.cfg', 'w') as f:
     json.dump(data, f, separators=(',', ':'))
-
 
 sniping_list = milkconfig['Booths']['Sniping']['SnipingList']
 
@@ -80,7 +79,7 @@ with open('C:\\Users\\Admin\\Desktop\\Psx_M\\Configurations\V2\\Purging\\Default
 
 repo = g.get_user('Mayhem00E').get_repo('Psx_M')
 
-os.chdir(r"c:/Users/Admin/Desktop/Psx_M")
+os.chdir(r"c:\Users\Admin\Desktop\Psx_M")
 
 subprocess.run(['git', 'add', '.'], check=True)
 
