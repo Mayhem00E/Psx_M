@@ -3,7 +3,7 @@ from github import Github
 import os
 import subprocess
 
-g = Github('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')
+g = Github('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')
 
 with open('Selling.cfg', 'r') as f:
     data = json.load(f)
