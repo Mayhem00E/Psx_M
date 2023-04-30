@@ -2,8 +2,21 @@ import json
 from github import Github
 import os
 import subprocess
+import requests
 
-g = Github('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')
+selling_config = requests.get(
+    "https://raw.githubusercontent.com/miyuyumi/AutoConfig/main/Configurations/v1/Selling.json")
+
+with open('Selling.json', 'r') as f:
+    sellcfg = json.load(f)
+
+if selling_config.status_code == 200:
+    if sellcfg != selling_config.text:
+        with open('Selling.json', 'w') as f:
+            f.write(selling_config.text)
+        print("Selling.json updated!")
+
+g = Github('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')
 
 with open('Selling.json', 'r') as f:
     data = json.load(f)
