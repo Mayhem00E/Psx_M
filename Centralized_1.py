@@ -16,7 +16,7 @@ if selling_config.status_code == 200:
             f.write(selling_config.text)
         print("Selling.json updated!")
 
-g = Github('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')
+g = Github('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')
 
 with open('Selling.json', 'r') as f:
     data = json.load(f)
