@@ -2,6 +2,12 @@ if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 
+task.spawn(function()
+    -- task.wait(5)
+    setfpscap(10)
+    game:GetService("RunService"):Set3dRenderingEnabled(false)
+end)
+
 getgenv().DebugHook =
     "https://discord.com/api/webhooks/1101508002328105114/zFmIhMppmlQmj21EcIzs9Kv_S4evu7k4Em7k5G-Vy9SBEO-rNSrDR61kxP9n2xUFVlLN"
 getgenv().MailHook =
@@ -22,14 +28,17 @@ local function makeGetRequest(url)
 end
 
 function Webhook(Url, Data)
-    request {
-        Url = Url,
-        Method = "POST",
-        Headers = {
-            ["Content-Type"] = "application/json"
-        },
-        Body = game:GetService("HttpService"):JSONEncode(Data)
-    }
+    task.spawn(function()
+        request {
+            Url = Url,
+            Method = "POST",
+            Headers = {
+                ["Content-Type"] = "application/json"
+            },
+            Body = game:GetService("HttpService"):JSONEncode(Data)
+        }
+    end)
+
 end
 
 sendError = function()
