@@ -3,7 +3,6 @@ if not game:IsLoaded() then
 end
 
 task.spawn(function()
-    -- task.wait(5)
     setfpscap(10)
     game:GetService("RunService"):Set3dRenderingEnabled(false)
 end)
