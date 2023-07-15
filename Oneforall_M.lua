@@ -66,24 +66,33 @@ sendError = function()
     end
 end
 
-pcall(function()
-    if promptOverlay.ErrorPrompt.MessageArea.ErrorFrame.ErrorMessage.Text then
-        repeat
-            if errorMessage ~= "Label" then
-                sendError()
-                if string.match(errorMessage, "unexpected client behavior") or
-                    string.match(errorMessage, "Please rejoin%.") then
-                    game:Shutdown()
-                else
-                    local getResponse = makeGetRequest(apiUrl)
-                    game:GetService("TeleportService"):TeleportToPlaceInstance(7722306047, getResponse,
-                        game.Players.LocalPlayer)
-                    task.wait(300)
+task.spawn(function()
+    promptOverlay.ChildAdded:connect(function(V)
+        if V.Name == 'ErrorPrompt' then
+            repeat
+                Overlay = promptOverlay.ErrorPrompt.MessageArea.ErrorFrame.ErrorMessage.Text
+                if Overlay ~= "Label" then
+                    if Overlay:find("[SAVING]") or Overlay:find("Saving failed") then
+                        sendError()
+                        task.wait(300)
+                        local getResponse = makeGetRequest(apiUrl)
+                        game:GetService("TeleportService"):TeleportToPlaceInstance(7722306047, getResponse,
+                            game.Players.LocalPlayer)
+
+                    elseif Overlay:find("unexpected client behavior") or Overlay:find("Please rejoin%.") then
+                        sendError()
+                        game:Shutdown()
+                    else
+                        sendError()
+                        local getResponse = makeGetRequest(apiUrl)
+                        game:GetService("TeleportService"):TeleportToPlaceInstance(7722306047, getResponse,
+                            game.Players.LocalPlayer)
+                    end
                 end
-            end
-            task.wait(0.5)
-        until false
-    end
+                task.wait(5)
+            until false
+        end
+    end)
 end)
 
 task.spawn(function()
