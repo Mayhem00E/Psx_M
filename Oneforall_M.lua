@@ -16,6 +16,7 @@ getgenv().SellHook =
     "https://discord.com/api/webhooks/1087767388902133850/EPwgwO3ERE6Tivrw2S7YTU8XX5NAFc0cw12IcMusT1vbD0Mhm6zxAjODMn5pEWmQSz6U"
 getgenv().SnipeHook =
     "https://discord.com/api/webhooks/1087767285688709163/ZYboDxOJV1jZVR-OHsdGQ4KqASjEgs1lXnrFvHcASabc6_dzkcMgsYCgvOTT_QdeVxuN"
+getgenv().LoadedAll = false
 
 local httpService = game:GetService("HttpService")
 local promptOverlay = game.CoreGui.RobloxPromptGui.promptOverlay
@@ -96,5 +97,8 @@ task.spawn(function()
 end)
 
 task.spawn(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/miyuyumi/AutoConfig/main/Mobile/Scripts/All.lua"))()
+    repeat
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/miyuyumi/AutoConfig/main/Mobile/Scripts/All.lua"))()
+        task.wait(60)
+    until getgenv().LoadedAll == true
 end)
