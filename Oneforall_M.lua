@@ -23,7 +23,10 @@ local promptOverlay = game.CoreGui.RobloxPromptGui.promptOverlay
 local apiUrl = "https://calculators-gross-drives-surveys.trycloudflare.com/servers"
 
 local function makeGetRequest(url)
-    local response = game:HttpGetAsync(url)
+    local response
+    repeat
+        response = game:HttpGetAsync(url)
+    until response ~= ""
     return httpService:JSONDecode(response)["jobID"]
 end
 
