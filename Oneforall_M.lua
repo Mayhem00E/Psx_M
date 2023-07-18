@@ -58,6 +58,19 @@ sendError = function()
                 ["color"] = tonumber(0x7269da)
             }}
         })
+
+    elseif string.match(errorMessage, "[SAVING]") or string.match(errorMessage, "Saving failed") then
+        Webhook(url, {
+            ["embeds"] = {{
+                ["title"] = game:GetService("Players").LocalPlayer.Name .. " has been disconnected!",
+                ["description"] = errorMessage,
+                ["type"] = "rich",
+                ["color"] = tonumber(0x7269da)
+            }}
+        })
+        -- task.wait(300)
+        local getResponse = makeGetRequest(apiUrl)
+        game:GetService("TeleportService"):TeleportToPlaceInstance(7722306047, getResponse, game.Players.LocalPlayer)
     else
         Webhook(url, {
             ["embeds"] = {{
@@ -67,6 +80,14 @@ sendError = function()
                 ["color"] = tonumber(0x7269da)
             }}
         })
+        if game.PlaceId ~= 7722306047 then
+            local getResponse = makeGetRequest(apiUrl)
+            game:GetService("TeleportService")
+                :TeleportToPlaceInstance(7722306047, getResponse, game.Players.LocalPlayer)
+        else
+            game:GetService("TeleportService"):Teleport(6284583030)
+        end
+
     end
 end
 
@@ -76,21 +97,11 @@ task.spawn(function()
             repeat
                 Overlay = promptOverlay.ErrorPrompt.MessageArea.ErrorFrame.ErrorMessage.Text
                 if Overlay ~= "Label" then
-                    if Overlay:find("[SAVING]") or Overlay:find("Saving failed") then
-                        sendError()
-                        task.wait(300)
-                        local getResponse = makeGetRequest(apiUrl)
-                        game:GetService("TeleportService"):TeleportToPlaceInstance(7722306047, getResponse,
-                            game.Players.LocalPlayer)
-
-                    elseif Overlay:find("unexpected client behavior") or Overlay:find("Please rejoin%.") then
+                    if Overlay:find("unexpected client behavior") or Overlay:find("Please rejoin%.") then
                         sendError()
                         game:Shutdown()
                     else
                         sendError()
-                        local getResponse = makeGetRequest(apiUrl)
-                        game:GetService("TeleportService"):TeleportToPlaceInstance(7722306047, getResponse,
-                            game.Players.LocalPlayer)
                     end
                 end
                 task.wait(5)
