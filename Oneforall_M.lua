@@ -20,7 +20,7 @@ getgenv().LoadedAll = false
 
 local httpService = game:GetService("HttpService")
 local promptOverlay = game.CoreGui.RobloxPromptGui.promptOverlay
-local apiUrl = "https://calculators-gross-drives-surveys.trycloudflare.com/servers"
+local apiUrl = "https://functioning-install-isa-larry.trycloudflare.com/servers"
 
 local function makeGetRequest(url)
     local response
