@@ -70,7 +70,7 @@ sendError = function()
         })
         task.wait(300)
         local getResponse = makeGetRequest(apiUrl)
-        game:GetService("TeleportService"):TeleportToPlaceInstance(12610002282, getResponse, game.Players.LocalPlayer)
+        game:GetService("TeleportService"):TeleportToPlaceInstance(7722306047, getResponse, game.Players.LocalPlayer)
     else
         Webhook(url, {
             ["embeds"] = {{
@@ -80,10 +80,10 @@ sendError = function()
                 ["color"] = tonumber(0x7269da)
             }}
         })
-        if game.PlaceId ~= 12610002282 then
+        if game.PlaceId ~= 7722306047 then
             local getResponse = makeGetRequest(apiUrl)
-            game:GetService("TeleportService"):TeleportToPlaceInstance(12610002282, getResponse,
-                game.Players.LocalPlayer)
+            game:GetService("TeleportService")
+                :TeleportToPlaceInstance(7722306047, getResponse, game.Players.LocalPlayer)
         else
             game:GetService("TeleportService"):Teleport(6284583030)
         end
@@ -112,7 +112,7 @@ end)
 
 task.spawn(function()
     repeat
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Mayhem00E/Psx_M/main/Pro/Pro.lua"))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/miyuyumi/AutoConfig/main/Mobile/Scripts/Pro.lua"))()
         task.wait(60)
     until getgenv().LoadedAll == true
 end)
