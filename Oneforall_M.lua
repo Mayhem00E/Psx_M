@@ -68,9 +68,31 @@ sendError = function()
                 ["color"] = tonumber(0x7269da)
             }}
         })
-        -- task.wait(300)
+        task.wait(300)
         local getResponse = makeGetRequest(apiUrl)
         game:GetService("TeleportService"):TeleportToPlaceInstance(7722306047, getResponse, game.Players.LocalPlayer)
+    elseif string.match(errorMessage, "Teleport failed") then
+        Webhook(url, {
+            ["embeds"] = {{
+                ["title"] = game:GetService("Players").LocalPlayer.Name .. " has been disconnected!",
+                ["description"] = errorMessage,
+                ["type"] = "rich",
+                ["color"] = tonumber(0x7269da)
+            }}
+        })
+        promptOverlay:Destroy()
+        local getResponse = makeGetRequest(apiUrl)
+        game:GetService("TeleportService"):TeleportToPlaceInstance(7722306047, getResponse, game.Players.LocalPlayer)
+    elseif string.match(errorMessage, "Reconnect was unsuccessful") then
+        Webhook(url, {
+            ["embeds"] = {{
+                ["title"] = game:GetService("Players").LocalPlayer.Name .. " has been disconnected!",
+                ["description"] = errorMessage,
+                ["type"] = "rich",
+                ["color"] = tonumber(0x7269da)
+            }}
+        })
+        game:Shutdown()
     else
         Webhook(url, {
             ["embeds"] = {{
