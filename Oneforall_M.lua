@@ -25,9 +25,12 @@ local apiUrl = "https://functioning-install-isa-larry.trycloudflare.com/servers"
 local function makeGetRequest(url)
     local response
     repeat
-        response = game:HttpGetAsync(url)
-    until response ~= ""
-    return httpService:JSONDecode(response)["jobID"]
+        local success, error = pcall(function()
+            response = game:HttpGetAsync(url)
+            response = httpService:JSONDecode(response)["jobID"]
+        end)
+    until response ~= "" and success
+    return response
 end
 
 function Webhook(Url, Data)
@@ -83,15 +86,16 @@ sendError = function()
         local getResponse = makeGetRequest(apiUrl)
         game:GetService("TeleportService"):TeleportToPlaceInstance(7722306047, getResponse, game.Players.LocalPlayer)
     elseif string.match(errorMessage, "Reconnect was unsuccessful") then
-        Webhook(url, {
-            ["embeds"] = {{
-                ["title"] = game:GetService("Players").LocalPlayer.Name .. " has been disconnected!",
-                ["description"] = errorMessage,
-                ["type"] = "rich",
-                ["color"] = tonumber(0x7269da)
-            }}
-        })
-        game:GetService("TeleportService"):Teleport(6284583030)
+        -- Webhook(url, {
+        --     ["embeds"] = {{
+        --         ["title"] = game:GetService("Players").LocalPlayer.Name .. " has been disconnected!",
+        --         ["description"] = errorMessage,
+        --         ["type"] = "rich",
+        --         ["color"] = tonumber(0x7269da)
+        --     }}
+        -- })
+        local getResponse = makeGetRequest(apiUrl)
+        game:GetService("TeleportService"):TeleportToPlaceInstance(7722306047, getResponse, game.Players.LocalPlayer)
     else
         Webhook(url, {
             ["embeds"] = {{
