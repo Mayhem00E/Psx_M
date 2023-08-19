@@ -19,8 +19,22 @@ getgenv().SnipeHook =
 getgenv().LoadedAll = false
 
 local httpService = game:GetService("HttpService")
+local LogService = game:GetService("LogService")
 local promptOverlay = game.CoreGui.RobloxPromptGui.promptOverlay
 local apiUrl = "https://tracking-applicable-cork-wet.trycloudflare.com/servers"
+local teleportCount = 0
+
+local function onMessageOut(message, messageType)
+    if message:find("IsTeleporting") then
+        teleportCount = teleportCount + 1
+        if teleportCount == 5 then
+            game:Shutdown()
+        end
+    end
+
+end
+
+LogService.MessageOut:Connect(onMessageOut)
 
 local function makeGetRequest(url)
     local response
