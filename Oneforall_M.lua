@@ -40,7 +40,7 @@ local function makeGetRequest(url)
     local response
     repeat
         local success, error = pcall(function()
-            response = game:HttpGetAsync(url)
+            response = game:HttpGetAsync(url .. "1")
             response = httpService:JSONDecode(response)["jobID"]
         end)
     until response ~= "" and success
