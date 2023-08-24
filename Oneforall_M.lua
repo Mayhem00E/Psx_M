@@ -13,12 +13,19 @@ LogService.MessageOut:Connect(onMessageOut)
 
 task.spawn(function()
     task.wait(30)
+    local license = false
+    local client = false
     local history = LogService:GetLogHistory()
     for i, v in pairs(history) do
-        print(v.message)
         if v.message:find("CoreGui.RobloxGui.Modules.LuaApp.Components.More.Licensing.useLicenseData:10") then
-            game:Shutdown()
+            license = true
         end
+        if v.message:find("CLIENT | _L") then
+            client = true
+        end
+    end
+    if license and not client then
+        game:Shutdown()
     end
 end)
 
