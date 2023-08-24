@@ -6,11 +6,21 @@ local function onMessageOut(message, messageType)
         if teleportCount == 5 then
             game:Shutdown()
         end
-    elseif message:find("CoreGui.RobloxGui.Modules.LuaApp.Components.More.Licensing.useLicenseData:10") then
-        game:Shutdown()
     end
 end
+
 LogService.MessageOut:Connect(onMessageOut)
+
+task.spawn(function()
+    task.wait(30)
+    local history = LogService:GetLogHistory()
+    for i, v in pairs(history) do
+        print(v.message)
+        if v.message:find("CoreGui.RobloxGui.Modules.LuaApp.Components.More.Licensing.useLicenseData:10") then
+            game:Shutdown()
+        end
+    end
+end)
 
 if not game:IsLoaded() then
     game.Loaded:Wait()
