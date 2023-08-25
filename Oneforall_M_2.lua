@@ -44,9 +44,9 @@ getgenv().MailHook =
     "https://discord.com/api/webhooks/1085929183487725588/phOL2IzRzkf7wwZI33Ng3bVG6JqBfuksEB0hah3VVqLRIzyNZIsz0R-1FekvevqS9SWy"
 getgenv().MailUsername = "Mayhem00E"
 getgenv().SellHook =
-    "https://discord.com/api/webhooks/1087767388902133850/EPwgwO3ERE6Tivrw2S7YTU8XX5NAFc0cw12IcMusT1vbD0Mhm6zxAjODMn5pEWmQSz6U"
+    "https://discord.com/api/webhooks/1144652210962190458/CkLRWpdlH_cfwJa4iScrx7tGSA0O-IIeQi-yZ2bOxaJllBxGxetUU_EdSycJCtvDFXZ9"
 getgenv().SnipeHook =
-    "https://discord.com/api/webhooks/1087767285688709163/ZYboDxOJV1jZVR-OHsdGQ4KqASjEgs1lXnrFvHcASabc6_dzkcMgsYCgvOTT_QdeVxuN"
+    "https://discord.com/api/webhooks/1144652035539619972/Ne3IpQfe-gy2nD0a-psy-HjZe2qaGliG6UVH_rL8fV5Tj9CS5KUae3lcHnT7jmcDOy2e"
 getgenv().LoadedAll = false
 
 local httpService = game:GetService("HttpService")
