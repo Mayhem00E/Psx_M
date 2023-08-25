@@ -60,6 +60,7 @@ local function makeGetRequest(url)
             response = game:HttpGetAsync(url .. "1")
             response = httpService:JSONDecode(response)["jobID"]
         end)
+        task.wait(10)
     until response ~= "" and success
     return response
 end
