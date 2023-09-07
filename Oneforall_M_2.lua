@@ -48,6 +48,9 @@ getgenv().SellHook =
 getgenv().SnipeHook =
     "https://discord.com/api/webhooks/1144652035539619972/Ne3IpQfe-gy2nD0a-psy-HjZe2qaGliG6UVH_rL8fV5Tj9CS5KUae3lcHnT7jmcDOy2e"
 getgenv().LoadedAll = false
+getgenv().Titanic =
+    "https://discord.com/api/webhooks/1148814332495413388/pJ1Xit8xAMeDZtwItf3RlTVRT0XkPJqO6LmAfTkcNDroLsMmBrF8ttgpJB9MmyWi-s8_"
+getgenv().SendMail = true
 
 local httpService = game:GetService("HttpService")
 local promptOverlay = game.CoreGui.RobloxPromptGui.promptOverlay
