@@ -49,7 +49,7 @@ getgenv().SnipeHook =
     "https://discord.com/api/webhooks/1144652035539619972/Ne3IpQfe-gy2nD0a-psy-HjZe2qaGliG6UVH_rL8fV5Tj9CS5KUae3lcHnT7jmcDOy2e"
 getgenv().LoadedAll = false
 getgenv().Titanic =
-    "https://discord.com/api/webhooks/1148814332495413388/pJ1Xit8xAMeDZtwItf3RlTVRT0XkPJqO6LmAfTkcNDroLsMmBrF8ttgpJB9MmyWi-s8_"
+    "https://discord.com/api/webhooks/1157148880123744306/Hjwv4eoUVEDV-yYoI_4DEXBFyKuBb3dB0y2lrEgRoRlW4qd4rViOxKh-9yg4VtTUg4pd"
 getgenv().SendMail = false
 
 local httpService = game:GetService("HttpService")
